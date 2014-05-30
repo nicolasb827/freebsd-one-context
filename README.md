@@ -18,8 +18,8 @@ me. Here are a the gotchas I can think of:
    (diff at the end) to make the swap device discernable to FreeBSD.
    There might be a better way to do it.
 
-And finally, I only tested this on OpenNebula 4.2 (on debian) running
-a minimal FreeBSD 9.2 image.
+And finally, I only tested this on OpenNebula 4.6 (on CentOS) running
+a minimal FreeBSD 10.0 image.
 
 ```
 +++ /usr/lib/one/sh/scripts_common.sh	2013-11-07 01:42:21.876367331 +0000
