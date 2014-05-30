@@ -2,6 +2,9 @@
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
+# by default, keep existent keys
+SSH_KEEP_KEYS="YES"
+
 if [ -z "$SSH_PUBLIC_KEY" -a -z "$EC2_PUBLIC_KEY" ]; then
   exit 0
 fi
@@ -10,7 +13,7 @@ mkdir -m0700 /root/.ssh
 if [ ! -f /root/.ssh/authorized_keys ]; then
   cat /dev/null > /root/.ssh/authorized_keys
 fi
-if [ -z "$SSH_KEEP_KEYS" ]; then
+if [ -z "$SSH_KEEP_KEYS" -o "$SSH_KEEP_KEYS" == "NO" ]; then
   cat /dev/null > /root/.ssh/authorized_keys
 fi
 

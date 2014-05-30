@@ -1,6 +1,8 @@
 #!/bin/sh
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
+# for dual stack on eth0
+ETH0_CONTEXT_FORCE_IPV4="YES"
 
 get_mac() {
   if=$1
