@@ -4,6 +4,7 @@
 #
 # PROVIDE: vmcontext
 # REQUIRE: LOGIN
+# KEYWORD: nojail
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
@@ -16,12 +17,15 @@
 . /etc/rc.subr
 
 name=vmcontext
-rcvar=`set_rcvar`
+rcvar=${name}_enable
 
 load_rc_config $name
 
 : ${vmcontext_enable="NO"}
 : ${vmcontext_dir="%%PREFIX%%/etc/one-context.d"}
+: ${vmcontext_cdrom:=/dev/vtbd1}
+
+required_dirs="/mnt"
 
 start_cmd="do_start"
 stop_cmd="do_stop"

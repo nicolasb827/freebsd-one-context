@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	one-context
-PORTVERSION=	4.2.1
+PORTVERSION=	4.6.1
 PORTREVISION=	0
 CATEGORIES=	sysutils
 

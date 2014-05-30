@@ -9,6 +9,13 @@ for ns in "$DNS" `env | grep -E '^ETH[0-9]+_DNS=' | sort | cut -d= -f2`; do
   fi
 done
 
+searchdomains=''
+for dom in "$SEARCH_DOMAIN" `env | grep -E '^ETH[0-9]+_SEARCH_DOMAIN=' | sort | cut -d= -f2`; do
+  if [ -n "$dom" ]; then
+    searchdomains="$searchdomains $dom"
+  fi
+done
+
 [ -z "$nameservers" ] && exit 0
 
 sed -i '' -e "/^nameserver /d" /etc/resolv.conf
@@ -16,5 +23,11 @@ sed -i '' -e "/^nameserver /d" /etc/resolv.conf
 for ns in $nameservers; do
   echo "nameserver $ns"
 done >> /etc/resolv.conf
+
+[ -z "$searchdomains" ] && exit 0
+
+sed -i '' -e "/^search /d" /etc/resolv.conf
+
+echo "search $searchdomains" >> /etc/resolv.conf
 
 exit 0
